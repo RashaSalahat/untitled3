@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "151443582062",
+    "project_id": "chatter-grad-e1809",
+    "storage_bucket": "chatter-grad-e1809.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151443582062:android:d0af861de0ad55ed284a7f",
+        "android_client_info": {
+          "package_name": "com.example.untitled3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "151443582062-l47od6ipfu8en0km50v5pr5k7p281vv5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.untitled3",
+            "certificate_hash": "a133272063f8bdd1ba96940a9cb3c791122314a5"
+          }
+        },
+        {
+          "client_id": "151443582062-ht5kr2lap6t81l562gu3vrlnbale1k1k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3PYjanybi3qR4rYJ1QTsZ3yMEINRQuVo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "151443582062-ht5kr2lap6t81l562gu3vrlnbale1k1k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
