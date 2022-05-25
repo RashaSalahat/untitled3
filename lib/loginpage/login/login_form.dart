@@ -51,7 +51,7 @@ class _LoginFormState extends State<LoginForm> {
             TextFormField(
               controller: _emailController,
               decoration: InputDecoration(
-                icon: Icon(Icons.email),
+                icon: Icon(Icons.person),
                 labelText: 'Name', //
               ),
               keyboardType: TextInputType.emailAddress,

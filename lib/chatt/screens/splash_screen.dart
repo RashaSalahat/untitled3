@@ -47,6 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
         // connect Stream user
         final client = StreamChatCore.of(context).client;
+
         await client.connectUser(
           User(id: user.uid),
           results[0]!.data,

@@ -41,7 +41,7 @@ class _LineChartAPIState extends State<LineChartAPI> {
   Future<void> getData() async {
     response =
         await _networkHelper.get("http://10.0.2.2:3000/getWorkout/Rasha");
-    tempdata = welcomeFromJson("[" + response.body + "]");
+    tempdata = welcomeFromJson(response.body);
     genders = tempdata;
     length = tempdata.toList().length;
     if (length != 0) print(tempdata.toList().elementAt(0).id);

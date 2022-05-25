@@ -165,6 +165,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             decoration: InputDecoration(
                               labelText: "hours",
                             ),
+                            onChanged: (val) {
+                              wed = val;
+                              //  password = val;
+                              /// setUserpassword(password);
+                            },
                           )
                         ],
                       ),
@@ -295,7 +300,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 onPressed: () {
                                   /////function
                                   AuthService()
-                                      .addSleep(username, mon, tue, wed, thu,
+                                      .addWorkout(username, mon, tue, wed, thu,
                                           fri, sat, sun)
                                       .then((val) {
                                     Fluttertoast.showToast(

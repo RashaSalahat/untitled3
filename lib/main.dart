@@ -12,6 +12,7 @@ import 'package:hotel_booking/bottomApp.dart';
 import 'homeToyScreen.dart';
 import 'loginpage/login/welcome.dart';
 //import 'package:aftersignup/color.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 void main() => runApp(MyApp());
 

@@ -1,3 +1,4 @@
+import 'package:hotel_booking/foodStatic/data/page/home_page.dart';
 import 'package:hotel_booking/settingpage/consttants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Appointment/userappointment.dart';
 import '../Food/mainFood.dart';
 import '../loginpage/login/login_screen.dart';
+import 'package:hotel_booking/Notifications.dart';
 
 class SetScreen extends StatelessWidget {
   @override
@@ -71,6 +73,76 @@ class SetScreen extends StatelessWidget {
                                 padding:
                                     EdgeInsets.fromLTRB(20.0, 0.0, 1.0, 0.0),
                                 child: Text('Food',
+                                    style: GoogleFonts.pacifico(
+                                        fontWeight: FontWeight.w200,
+                                        fontSize: 25,
+                                        color: Color(0xff6a515e))),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(40),
+                          ),
+                        ),
+                        padding: EdgeInsets.all(10.0),
+                        //color: Colors.pinkAccent,
+                        width: 350,
+                        height: 70,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return HomePage_Eatingmethod();
+                              },
+                            ));
+                          },
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsets.fromLTRB(20.0, 0.0, 1.0, 0.0),
+                                child: Text('Eating Method',
+                                    style: GoogleFonts.pacifico(
+                                        fontWeight: FontWeight.w200,
+                                        fontSize: 25,
+                                        color: Color(0xff6a515e))),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(40),
+                          ),
+                        ),
+                        padding: EdgeInsets.all(10.0),
+                        //color: Colors.pinkAccent,
+                        width: 350,
+                        height: 70,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return Notifications();
+                              },
+                            ));
+                          },
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsets.fromLTRB(20.0, 0.0, 1.0, 0.0),
+                                child: Text('get Notifications',
                                     style: GoogleFonts.pacifico(
                                         fontWeight: FontWeight.w200,
                                         fontSize: 25,

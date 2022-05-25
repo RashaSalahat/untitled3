@@ -30,7 +30,7 @@ class _SleepChartAPIState extends State<SleepChartAPI> {
   Future<void> getData() async {
     response = await _networkHelper
         .get("http://10.0.2.2:3000/getSleep/6277b4321119d5367cf8b045");
-    tempdata = welcomFromJson("[" + response.body + "]");
+    tempdata = welcomFromJson(response.body);
     genders = tempdata;
     print(tempdata.toList().elementAt(0).id);
 

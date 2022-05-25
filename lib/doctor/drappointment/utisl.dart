@@ -22,4 +22,4 @@ const redGradient = LinearGradient(
 );
 
 const USER_IMAGE =
-    'https://th.bing.com/th/id/R.0a06733de26c157b50cd2d72f3aac3c0?rik=E0URZZA9LzL%2fAg&pid=ImgRaw&r=0';
+    'https://i.pinimg.com/564x/d8/77/13/d87713996528ff50c5218ef402e1b98d.jpg';

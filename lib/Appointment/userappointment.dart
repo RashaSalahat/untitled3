@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:hotel_booking/Appointment/Accepted.dart';
+import 'package:hotel_booking/Appointment/AppService.dart';
 import 'package:hotel_booking/Appointment/doctors.dart';
 import 'package:hotel_booking/Appointment/utisl.dart';
 import 'package:hotel_booking/Appointment/moods.dart';
@@ -38,6 +42,9 @@ class Appointment extends StatefulWidget {
 
 class _AppointmentState extends State<Appointment> {
   Doctor docotorService = Doctor();
+  Appuser userService = Appuser();
+  var Doctorname;
+  var date;
   int _selectedIndex = 0;
 
   var count = 4;
@@ -240,81 +247,111 @@ class _AppointmentState extends State<Appointment> {
 
   Container _appoinmentCard() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 18.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-      ),
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              CircleAvatar(
-                backgroundColor: Color(0xFFD9D9D9),
-                backgroundImage: NetworkImage(USER_IMAGE),
-                radius: 36.0,
-              ),
-              RichText(
-                text: TextSpan(
-                  text: "RRR",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    height: 1.5,
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: '\nSunday,May 5th at 8:00 PM',
-                      style: TextStyle(
-                        color: Colors.black45,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 15,
+      height: 240.0,
+      child: FutureBuilder<List>(
+          future: userService.getAllApp(),
+          builder: (context, snapshot) {
+            print(snapshot.data);
+            if (snapshot.hasData) {
+              return ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: snapshot.data?.length,
+                  itemBuilder: (context, index) {
+                    print(snapshot.data![index]['Doctorname']);
+                    return GestureDetector(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 14.0, horizontal: 18.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                CircleAvatar(
+                                  backgroundColor: Color(0xFFD9D9D9),
+                                  backgroundImage: NetworkImage(USER_IMAGE),
+                                  radius: 36.0,
+                                ),
+                                RichText(
+                                  text: TextSpan(
+                                    text: snapshot.data![index]['Doctorname'],
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.5,
+                                    ),
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: '\n' +
+                                            snapshot.data![index]['date'],
+                                        style: TextStyle(
+                                          color: Colors.black45,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text:
+                                            '\n570 Kyemmer Stores \nNairobi Kenya C -54 Drive',
+                                        style: TextStyle(
+                                          color: Colors.black38,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Colors.grey[400],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 8.0,
+                            ),
+                            Divider(
+                              color: Colors.grey[200],
+                              height: 3,
+                              thickness: 1,
+                            ),
+                            SizedBox(
+                              height: 8.0,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                _iconBuilder(
+                                    LineAwesomeIcons.check_circle, 'Check-in'),
+                                _iconBuilder(
+                                    LineAwesomeIcons.times_circle, 'Cancel'),
+                                _iconBuilder(LineAwesomeIcons.calendar_times_o,
+                                    'Calender'),
+                                _iconBuilder(
+                                    LineAwesomeIcons.compass, 'Directions'),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    TextSpan(
-                      text: '\n570 Kyemmer Stores \nNairobi Kenya C -54 Drive',
-                      style: TextStyle(
-                        color: Colors.black38,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.grey[400],
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 8.0,
-          ),
-          Divider(
-            color: Colors.grey[200],
-            height: 3,
-            thickness: 1,
-          ),
-          SizedBox(
-            height: 8.0,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              _iconBuilder(LineAwesomeIcons.check_circle, 'Check-in'),
-              _iconBuilder(LineAwesomeIcons.times_circle, 'Cancel'),
-              _iconBuilder(LineAwesomeIcons.calendar_times_o, 'Calender'),
-              _iconBuilder(LineAwesomeIcons.compass, 'Directions'),
-            ],
-          )
-        ],
-      ),
+                    );
+                  });
+            } else {
+              return const Center(
+                child: Text('No Data Found'),
+              );
+            }
+          }),
     );
   }
 
@@ -367,6 +404,24 @@ class _AppointmentState extends State<Appointment> {
       ),
     );
   }
+
+  DateTime dateTime = DateTime.now();
+
+  Widget buildDateTimePicker() => SizedBox(
+        height: 180,
+        child: CupertinoDatePicker(
+          initialDateTime: dateTime,
+          mode: CupertinoDatePickerMode.dateAndTime,
+          minimumDate: DateTime(
+              DateTime.now().year, DateTime.now().month, DateTime.now().day),
+          maximumDate: DateTime(DateTime.now().year, DateTime.now().month + 1,
+              DateTime.now().day + 7),
+          use24hFormat: true,
+          onDateTimeChanged: (dateTime) => setState(
+            () => dateTime = dateTime,
+          ),
+        ),
+      );
 
   Widget _specialistsCardInfo() {
     return Container(
@@ -462,6 +517,10 @@ class _AppointmentState extends State<Appointment> {
                                     ),
                                     RaisedButton(
                                       onPressed: () {
+                                        print('sssssssssssssssssssssssssss');
+                                        Doctorname =
+                                            snapshot.data![index]['name'];
+                                        print(snapshot.data![index]['name']);
                                         showDialog(
                                             context: context,
                                             builder: (context) {
@@ -477,46 +536,17 @@ class _AppointmentState extends State<Appointment> {
                                                     overflow: Overflow.visible,
                                                     children: [
                                                       Container(
-                                                        height: 350,
+                                                        height: 300,
                                                         child: Padding(
                                                           padding:
                                                               const EdgeInsets
                                                                   .all(20.0),
                                                           child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              SizedBox(
-                                                                height: 50,
-                                                              ),
-                                                              Text(
-                                                                  "                                               Baby Time",
-                                                                  style: TextStyle(
-                                                                      fontFamily:
-                                                                          "Segoe UI",
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w700,
-                                                                      fontSize:
-                                                                          23,
-                                                                      color: Color(
-                                                                          0xff070707))),
-                                                              SizedBox(
-                                                                height: 20,
-                                                              ),
-                                                              Text(
-                                                                  "Please Pick the time :",
-                                                                  style: TextStyle(
-                                                                      fontFamily:
-                                                                          "Segoe UI",
-                                                                      fontSize:
-                                                                          16,
-                                                                      color: Color(
-                                                                          0xff070707))),
-                                                              SizedBox(
-                                                                height: 50,
-                                                              ),
+                                                              buildDateTimePicker(),
                                                               Container(
                                                                 width: 90,
                                                                 height: 45,
@@ -543,7 +573,30 @@ class _AppointmentState extends State<Appointment> {
                                                                 child:
                                                                     MaterialButton(
                                                                         onPressed:
-                                                                            () {},
+                                                                            () {
+                                                                          /// PUT THE CODE IN HERE :::
+                                                                          var result = dateTime.toString().substring(
+                                                                              1,
+                                                                              19);
+                                                                          ; // 'artlang'
+
+                                                                          AppService()
+                                                                              .addApp(username, Doctorname, result)
+                                                                              .then((val) {
+                                                                            //_navigateToNextScreen(context);
+
+                                                                            print("username is :" +
+                                                                                username);
+                                                                            Fluttertoast.showToast(
+                                                                                msg: val.data['msg'],
+                                                                                toastLength: Toast.LENGTH_SHORT,
+                                                                                gravity: ToastGravity.BOTTOM,
+                                                                                timeInSecForIosWeb: 1,
+                                                                                backgroundColor: Colors.green,
+                                                                                textColor: Colors.white,
+                                                                                fontSize: 16.0);
+                                                                          });
+                                                                        },
                                                                         materialTapTargetSize:
                                                                             MaterialTapTargetSize
                                                                                 .shrinkWrap,
@@ -558,7 +611,7 @@ class _AppointmentState extends State<Appointment> {
                                                                             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                             children: const <Widget>[
                                                                               Text(
-                                                                                "Start",
+                                                                                "Book",
                                                                                 style: TextStyle(
                                                                                   color: Colors.white,
                                                                                 ),
@@ -571,19 +624,17 @@ class _AppointmentState extends State<Appointment> {
                                                           ),
                                                         ),
                                                       ),
-
-                                                      //need to be changed
                                                       Positioned(
-                                                          top: -10,
+                                                          top: -50,
                                                           child: CircleAvatar(
                                                             child: ClipRRect(
                                                                 borderRadius: BorderRadius
                                                                     .all(Radius
                                                                         .circular(
-                                                                            100)),
+                                                                            70)),
                                                                 child: Image.asset(
-                                                                    "assets/images/logo.png")),
-                                                            radius: 30,
+                                                                    "assets/images/log.jpg")),
+                                                            radius: 45,
                                                           ))
                                                     ]),
                                               );

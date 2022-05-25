@@ -15,7 +15,7 @@ class Sleep extends StatefulWidget {
   State<Sleep> createState() => _SleepState();
 }
 
-var sun, mon, tue, wed, thu, fri, sat;
+var sunday, mon, tue, wed, thu, fri, sat;
 var username = getUsername();
 final items = ['1 hour', '2 hours', '3 hours', '4 hours', '5 hours'];
 String valuue = items[0].toString();
@@ -54,7 +54,7 @@ final wednesday = TextEditingController();
 final thursday = TextEditingController();
 final friday = TextEditingController();
 final saturday = TextEditingController();
-final sunday = TextEditingController();
+final sundayyy = TextEditingController();
 
 final postcode = TextEditingController();
 
@@ -224,6 +224,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             decoration: InputDecoration(
                               labelText: "hours",
                             ),
+                            onChanged: (val) {
+                              sat = val;
+                            },
                           )
                         ],
                       ),
@@ -243,7 +246,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               labelText: "hours",
                             ),
                             onChanged: (val) {
-                              wed = val;
+                              sunday = val;
                             },
                           )
                         ],
@@ -291,7 +294,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 onPressed: () {
                                   AuthService()
                                       .addSleep(username, mon, tue, wed, thu,
-                                          fri, sat, sun)
+                                          fri, sat, sunday)
                                       .then((val) {
                                     Fluttertoast.showToast(
                                         msg: val.data['msg'],

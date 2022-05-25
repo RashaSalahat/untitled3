@@ -45,6 +45,10 @@ dependencies:
   flutter_localizations: 
     sdk: flutter
     version: ^0.0.0
+  firebase_messaging_web: ^2.0.0
+  flutter_local_notifications: ^9.5.3+1
+  firebase_messaging: ^10.0.0
+  awesome_dialog: ^2.2.1
 
 dev_dependencies:
   flutter_test:

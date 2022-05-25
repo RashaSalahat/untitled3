@@ -109,6 +109,43 @@ class _ImageCarouselState extends State<ImageCarousel>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const <Widget>[
                     Text(
+                      "Admin",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ],
+                ),
+              )),
+        ),
+        SizedBox(
+          height: 600,
+        ),
+        Container(
+          width: 200,
+          height: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(80),
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [Color(0xffffae88), Color(0xff8f93ea)],
+            ),
+          ),
+          child: MaterialButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => LoginScreen(),
+                    ));
+              },
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              shape: StadiumBorder(),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const <Widget>[
+                    Text(
                       "Start Journey",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),

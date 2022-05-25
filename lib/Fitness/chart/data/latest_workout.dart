@@ -64,7 +64,7 @@ class _MilkState extends State<Milk> {
   Future<void> getData() async {
     response = await _networkHelper
         .get("http://10.0.2.2:3000/getMilk/626f11174faa0d66477b3a3f");
-    tempdata = welcomeFromJson("[" + response.body + "]");
+    tempdata = welcomeFromJson(response.body);
     genders = tempdata;
     print(tempdata.toList().elementAt(0).id);
     print((tempdata.toList().elementAt(0).sun.toDouble() - 1.5));

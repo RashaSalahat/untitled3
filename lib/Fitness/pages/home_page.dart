@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
   //LineChartAPI();
   Future<void> getData() async {
     response = await _networkHelper.get("http://10.0.2.2:3000/getMass/Rasha");
-    tempdata = welcomeFromJson("[" + response.body + "]");
+    tempdata = welcomeFromJson(response.body);
     genders = tempdata;
 
     int length = tempdata.toList().length;

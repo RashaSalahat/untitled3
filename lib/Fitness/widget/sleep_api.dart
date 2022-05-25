@@ -38,7 +38,7 @@ class _SleepChartAPIState extends State<SleepChartAPI> {
   //LineChartAPI();
   Future<void> getData() async {
     response = await _networkHelper.get("http://10.0.2.2:3000/getSleep/Rasha");
-    tempdata = welcomFromJson("[" + response.body + "]");
+    tempdata = welcomFromJson(response.body);
     genders = tempdata;
     length = tempdata.toList().length;
     if (length != 0) print(tempdata.toList().elementAt(0).id);
