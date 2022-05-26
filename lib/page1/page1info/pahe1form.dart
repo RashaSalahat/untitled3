@@ -82,7 +82,7 @@ class _LoginFormState extends State<LoginForm> {
 
               CountryListPick(
                 appBar: AppBar(
-                  backgroundColor: Colors.amber,
+                  backgroundColor: Color(0xff6a515e),
                   title: Text('Pick your country'),
                 ),
                 theme: CountryTheme(

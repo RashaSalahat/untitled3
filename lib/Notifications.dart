@@ -9,6 +9,9 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:http/http.dart' as http;
 
+import 'doctor/header_logo.dart';
+import 'doctor/my_header.dart';
+
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
@@ -121,7 +124,7 @@ class _NotificationsState extends State<Notifications> {
                 channel.id,
                 channel.name,
                 // channel.description,
-                color: Colors.blue,
+                color: Color(0xff6a515e),
                 playSound: true,
                 icon: '@mipmap/ic_launcher',
               ),
@@ -162,12 +165,12 @@ class _NotificationsState extends State<Notifications> {
     });
     flutterLocalNotificationsPlugin.show(
         0,
-        "Testing $_counter",
-        "How you doin ?",
+        "Notification $_counter",
+        "the Baby is crying !",
         NotificationDetails(
             android: AndroidNotificationDetails(channel.id, channel.name,
                 importance: Importance.high,
-                color: Colors.blue,
+                color: Color(0xff6a515e),
                 playSound: true,
                 icon: '@mipmap/ic_launcher')));
   }
@@ -176,14 +179,20 @@ class _NotificationsState extends State<Notifications> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Noti"),
+        backgroundColor: Color(0xff6a515e),
+        title: Text("Notifications"),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            MyHeader(
+              height: 535,
+              imageUrl: 'assets/images/cry.jpg',
+              child: HeaderLogo(),
+            ),
             Text(
-              'You have pushed the button this many times:',
+              'Crying Baby:',
             ),
             Text(
               '$_counter',
@@ -191,13 +200,14 @@ class _NotificationsState extends State<Notifications> {
             ),
             MaterialButton(
                 onPressed: () async {
-                  await sendNotify("Welcome", " I'm Rasha");
+                  await sendNotify("Hii", " The Baby is crying");
                 },
                 child: Text("Send Notify")),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xff6a515e),
         onPressed: showNotification,
         tooltip: 'Increment',
         child: Icon(Icons.add),

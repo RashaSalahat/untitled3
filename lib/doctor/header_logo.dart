@@ -16,13 +16,6 @@ class HeaderLogo extends StatelessWidget {
           SizedBox(
             width: 12,
           ),
-          Text(
-            'medical',
-            style: TextStyle(
-                fontSize: 38,
-                color: mTitleTextColor,
-                fontWeight: FontWeight.bold),
-          ),
         ],
       ),
     );

@@ -7,6 +7,7 @@ class User {
     required this.firstName,
     required this.lastName,
     required this.age,
+    int,
   });
 
   User copy({

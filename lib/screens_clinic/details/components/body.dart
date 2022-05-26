@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hotel_booking/constants_clinic.dart';
 import 'package:hotel_booking/models_Clinic/product.dart';
 
@@ -42,51 +43,64 @@ class Body extends StatelessWidget {
                           bottomRight: Radius.circular(50),
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Center(
-                            child: Hero(
-                              tag: index,
-                              child: ProductPoster(
-                                size: size,
-                                image: products[index].image,
+                      child: Center(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Center(
+                              child: Hero(
+                                tag: index,
+                                child: ProductPoster(
+                                  size: size,
+                                  image: products[index].image,
+                                ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: kDefaultPadding / 2),
-                            child: Text(
-                              snapshot.data![index]["name"],
-                              style: Theme.of(context).textTheme.headline6,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: kDefaultPadding / 2),
+                              child: Center(
+                                child: Text(
+                                  snapshot.data![index]["name"],
+                                  style: GoogleFonts.pacifico(
+                                      fontWeight: FontWeight.w200,
+                                      fontSize: 25,
+                                      color: Color(0xff6a515e)),
+                                ),
+                              ),
                             ),
-                          ),
-                          Text(
-                            snapshot.data![index]["address"],
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: kSecondaryColor,
+                            Center(
+                              child: Text(
+                                snapshot.data![index]["address"],
+                                style: GoogleFonts.pacifico(
+                                    fontWeight: FontWeight.w200,
+                                    fontSize: 20,
+                                    color: kSecondaryColor),
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(5),
-                            child: Text(
-                              snapshot.data![index]["information"],
-                              style: TextStyle(
-                                  color: kTextLightColor, fontSize: 18),
+                            // color: kSecondaryColor,
+                            Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Center(
+                                child: Text(
+                                  snapshot.data![index]["information"],
+                                  style: GoogleFonts.pacifico(
+                                      color: kTextLightColor, fontSize: 20),
+                                ),
+                              ),
                             ),
-                          ),
-                          // SizedBox(height: 10),
-                          Text(
-                            "\t \t \t" + snapshot.data![index]["status"],
-                            style: TextStyle(
-                                color: Colors.red,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                            // SizedBox(height: 10),
+                            Center(
+                              child: Text(
+                                snapshot.data![index]["status"],
+                                style: TextStyle(
+                                    color: Colors.red,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     ChatAndAddToCart(),

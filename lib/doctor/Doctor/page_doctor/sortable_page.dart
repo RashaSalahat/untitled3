@@ -26,7 +26,7 @@ class _SortablePageState extends State<SortablePage> {
       );
 
   Widget buildDataTable() {
-    final columns = ['First Name', 'Last Name', 'Age'];
+    final columns = ['Name', 'Date ', '   '];
 
     return DataTable(
       sortAscending: isAscending,

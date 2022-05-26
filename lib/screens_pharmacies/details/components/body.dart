@@ -8,6 +8,17 @@ import 'chat_and_add_to_cart.dart';
 import 'list_of_colors.dart';
 import 'product_image.dart';
 
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hotel_booking/api/pharm.dart';
+import 'package:hotel_booking/constants_pharmacies.dart';
+import 'package:hotel_booking/models_pharmacies/product.dart';
+
+import '../../../api/clinicdata.dart';
+import 'chat_and_add_to_cart.dart';
+import 'list_of_colors.dart';
+import 'product_image.dart';
+
 class Body extends StatelessWidget {
   final int index;
 
@@ -58,25 +69,33 @@ class Body extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: kDefaultPadding / 2),
-                            child: Text(
-                              snapshot.data![index]["name"],
-                              style: Theme.of(context).textTheme.headline6,
+                            child: Center(
+                              child: Text(
+                                snapshot.data![index]["name"],
+                                style: GoogleFonts.pacifico(
+                                    fontWeight: FontWeight.w200,
+                                    fontSize: 25,
+                                    color: Color(0xff6a515e)),
+                              ),
                             ),
                           ),
-                          Text(
-                            snapshot.data![index]["address"],
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: kSecondaryColor,
+                          Center(
+                            child: Text(
+                              snapshot.data![index]["address"],
+                              style: GoogleFonts.pacifico(
+                                  fontWeight: FontWeight.w200,
+                                  fontSize: 20,
+                                  color: kSecondaryColor),
                             ),
                           ),
                           Padding(
                             padding: EdgeInsets.all(5),
-                            child: Text(
-                              snapshot.data![index]["status"],
-                              style: TextStyle(
-                                  color: kTextLightColor, fontSize: 18),
+                            child: Center(
+                              child: Text(
+                                snapshot.data![index]["status"],
+                                style: TextStyle(
+                                    color: kTextLightColor, fontSize: 18),
+                              ),
                             ),
                           ),
                           // SizedBox(height: 10),
@@ -85,7 +104,7 @@ class Body extends StatelessWidget {
                               snapshot.data![index]["duty"] + "\n" + "\n",
                               style: TextStyle(
                                   color: Colors.red,
-                                  fontSize: 16,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),

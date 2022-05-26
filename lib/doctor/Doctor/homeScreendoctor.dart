@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: <Widget>[
                 MyHeader(
                   height: 535,
-                  imageUrl: 'assets/images/doctor.png',
+                  imageUrl: 'assets/images/pharm4f.jpg',
                   child: HeaderLogo(),
                 ),
               ],

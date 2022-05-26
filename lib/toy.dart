@@ -8,6 +8,9 @@ class ToyIm {
 // for our demo
 List<ToyIm> productToys = [
   ToyIm(
+    image: "assets/images/pet-cat1.png",
+  ),
+  ToyIm(
     image: "assets/images/toy1pp.png",
   ),
   ToyIm(
